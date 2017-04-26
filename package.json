@@ -19,7 +19,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://bitbucket.org/wisel/arsene-moment.git"
+    "url": "git+https://github.com/ListenArsene/arsene-moment/issues.git"
   },
   "keywords": [
     "arsene",
@@ -29,9 +29,9 @@
   "author": "guillaume@listenarsene.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://bitbucket.org/wisel/arsene-moment/issues"
+    "url": "https://github.com/ListenArsene/arsene-moment/issues"
   },
-  "homepage": "https://bitbucket.org/wisel/arsene-moment",
+  "homepage": "https://github.com/ListenArsene/arsene-moment",
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-cli": "^6.24.1",
