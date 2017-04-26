@@ -51,5 +51,10 @@
     "istanbul": "^1.0.0-alpha",
     "mocha": "^3.3.0",
     "rimraf": "^2.6.1"
+  },
+  "dependencies": {
+    "moment": "^2.18.1",
+    "moment-range": "^3.0.3",
+    "moment-timezone": "^0.5.13"
   }
 }
