@@ -1,7 +1,7 @@
 {
-  "name": "npm-module-boilerplate-es6",
+  "name": "arsene-moment",
   "version": "1.0.0",
-  "description": "Boilerplate for npm modules.",
+  "description": "Arsene addition to Moment and Moment-Range",
   "main": "./lib/index.js",
   "scripts": {
     "clean": "rimraf lib",
@@ -19,21 +19,19 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Travelport-Ukraine/npm-module-boilerplate.git"
+    "url": "git+https://bitbucket.org/wisel/arsene-moment.git"
   },
   "keywords": [
-    "boilerplate",
-    "npm",
-    "module",
-    "node",
-    "javascript"
+    "arsene",
+    "moment",
+    "moment-range"
   ],
-  "author": "Mark mail.ormark@gmail.com",
+  "author": "guillaume@listenarsene.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Travelport-Ukraine/npm-module-boilerplate/issues"
+    "url": "https://bitbucket.org/wisel/arsene-moment/issues"
   },
-  "homepage": "https://github.com/Travelport-Ukraine/npm-module-boilerplate#readme",
+  "homepage": "https://bitbucket.org/wisel/arsene-moment",
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-cli": "^6.24.1",

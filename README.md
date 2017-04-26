@@ -1,14 +1,9 @@
-# Why? [![Build Status](https://travis-ci.org/Travelport-Ukraine/npm-module-boilerplate.svg?branch=master)](https://travis-ci.org/Travelport-Ukraine/npm-module-boilerplate)
-:page_with_curl: Boilerplate for npm/node module. Write with ES6 - have compatibility with all node versions.
-
-This boilerplate is for people who want write code using all ES6 features ( and stage-2 ) but also want/need backwards compatibility with old node versions. 
+# What
+ListenArsene's datetime manipulation library, that extends Moment and MomentRange.  
 
 # Features
-* Build with [Babel](https://babeljs.io). (ES6 -> ES5)
-* Test with [mocha](https://mochajs.org).
-* Cover with [istanbul](https://github.com/gotwarlost/istanbul).
-* Check with [eslint](eslint.org).
-* Deploy with [Travis](travis-ci.org).
+* Extends Moment-Range to provide human readable periods
+* Add some utils to handle dates
 
 # Commands
 - `npm run clean` - Remove `lib/` directory
@@ -19,6 +14,8 @@ This boilerplate is for people who want write code using all ES6 features ( and 
 - `npm run test:examples` - We recommend writing examples on pure JS for better understanding module usage.
 - `npm run build` - Do some magic with ES6 to create ES5 code.
 - `npm run prepublish` - Hook for npm. Do all the checks before publishing you module.
+
+# Licence
 
 # Installation
 Just clone this repo and remove `.git` folder.
