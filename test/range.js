@@ -4,7 +4,7 @@ import dirtyChai from 'dirty-chai';
 chai.use(dirtyChai);
 
 import moment from 'moment';
-import ExtendedDateRange from '../src/range';
+import { ExtendedDateRange } from '../src';
 
 describe('ExtendedDateRange', () => {
   beforeEach(() => {
