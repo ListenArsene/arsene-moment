@@ -159,9 +159,9 @@ describe('ExtendedDateRange', () => {
     expect(r.humanPeriod).to.be.null();
   });
 
-  it('detects a plain week', () => {
+  it('detects a plain week/isoweek', () => {
     const r = new ExtendedDateRange('2017-01-02T00:00:00+01:00/2017-01-09T00:00:00+01:00');
-    expect(r.humanPeriod).to.be.equal('week');
+    expect(r.humanPeriod).to.be.equal('isoweek');
 
     r.tz('UTC');
     expect(r.humanPeriod).to.be.null();
@@ -171,13 +171,13 @@ describe('ExtendedDateRange', () => {
     expect(r.humanPeriod).to.be.null();
 
     r.tz('Europe/Paris'); // UTC +1:00
-    expect(r.humanPeriod).to.be.equal('isoweek');
+    expect(r.humanPeriod).to.be.equal('week');
 
     r.locale('fr');
-    expect(r.humanPeriod).to.be.equal('isoweek');
+    expect(r.humanPeriod).to.be.equal('week');
 
     r.locale('en-US');
-    expect(r.humanPeriod).to.be.equal('week');
+    expect(r.humanPeriod).to.be.equal('isoweek');
   });
 
   it('detects a plain month', () => {
