@@ -9,8 +9,10 @@ script:
 branches:
   only:
   - master
+  - /\d+\.\d+\.\d+[a-z]/
 
 deploy:
+  skip_cleanup: true
   provider: npm
   email: guillaume@listenarsene.com
   api_key:
