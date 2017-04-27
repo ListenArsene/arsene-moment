@@ -35,26 +35,26 @@ describe('ExtendedDateRange', () => {
 
   it('locale has NO effect on values', () => {
     const r = new ExtendedDateRange('2017-02-28T12:34:56+00:00/2017-02-28T12:34:56+00:00');
-    expect(r.start.hour()).to.equal(13);
+    r.tz('UTC');
+    expect(r.start.hour()).to.equal(12);
 
     r.locale('en-US');
-    expect(r.start.hour()).to.equal(13);
+    expect(r.start.hour()).to.equal(12);
 
     r.locale('ja');
-    expect(r.start.hour()).to.equal(13);
-
-    // TODO: Why are we reading 13 ? while UTC time is 12 ?
+    expect(r.start.hour()).to.equal(12);
   });
 
   it('locale has effect on literals', () => {
     const r = new ExtendedDateRange('2017-02-28T12:34:56+00:00/2017-02-28T12:34:56+00:00');
-    expect(r.start.format('LLLL')).to.equal('Tuesday, February 28, 2017 1:34 PM');
+    r.tz('UTC');
+    expect(r.start.format('LLLL')).to.equal('Tuesday, February 28, 2017 12:34 PM');
 
     r.locale('en-US');
-    expect(r.start.format('LLLL')).to.equal('Tuesday, February 28, 2017 1:34 PM');
+    expect(r.start.format('LLLL')).to.equal('Tuesday, February 28, 2017 12:34 PM');
 
     r.locale('ja');
-    expect(r.start.format('LLLL')).to.equal('2017年2月28日 13:34 火曜日');
+    expect(r.start.format('LLLL')).to.equal('2017年2月28日 12:34 火曜日');
   });
 
   it('supports timezone change', () => {
@@ -85,7 +85,6 @@ describe('ExtendedDateRange', () => {
   it('timezone has effect on values', () => {
     const r = new ExtendedDateRange('2017-02-28T12:34:56+00:00/2017-02-28T12:34:56+00:00');
     expect(r.tz()).to.be.undefined();
-    expect(r.start.hour()).to.equal(13);
 
     r.tz('UTC');
     expect(r.start.hour()).to.equal(12);
@@ -96,7 +95,6 @@ describe('ExtendedDateRange', () => {
 
   it('locale has NO effect on literals', () => {
     const r = new ExtendedDateRange('2017-02-28T12:34:56+00:00/2017-02-28T12:34:56+00:00');
-    expect(r.start.format('LLLL')).to.equal('Tuesday, February 28, 2017 1:34 PM');
 
     r.tz('UTC');
     expect(r.start.format('LLLL')).to.equal('Tuesday, February 28, 2017 12:34 PM');
@@ -115,7 +113,6 @@ describe('ExtendedDateRange', () => {
 
   it('detects a plain minute', () => {
     const r = new ExtendedDateRange('2017-01-01T00:00:00+00:00/2017-01-01T00:01:00+00:00');
-    expect(r.humanPeriod).to.equal('minute');
 
     r.tz('UTC');
     expect(r.humanPeriod).to.equal('minute');
@@ -129,7 +126,6 @@ describe('ExtendedDateRange', () => {
 
   it('detects a plain hour', () => {
     const r = new ExtendedDateRange('2017-01-01T00:00:00+00:00/2017-01-01T01:00:00+00:00');
-    expect(r.humanPeriod).to.equal('hour');
 
     r.tz('UTC');
     expect(r.humanPeriod).to.equal('hour');
@@ -143,7 +139,6 @@ describe('ExtendedDateRange', () => {
 
   it('detects a plain day', () => {
     const r = new ExtendedDateRange('2017-01-01T00:00:00+00:00/2017-01-02T00:00:00+00:00');
-    expect(r.humanPeriod).to.be.null();
 
     r.tz('UTC');
     expect(r.humanPeriod).to.equal('day');
@@ -161,7 +156,6 @@ describe('ExtendedDateRange', () => {
 
   it('detects a plain week/isoweek', () => {
     const r = new ExtendedDateRange('2017-01-02T00:00:00+01:00/2017-01-09T00:00:00+01:00');
-    expect(r.humanPeriod).to.be.equal('isoweek');
 
     r.tz('UTC');
     expect(r.humanPeriod).to.be.null();
@@ -182,7 +176,6 @@ describe('ExtendedDateRange', () => {
 
   it('detects a plain month', () => {
     const r = new ExtendedDateRange('2017-01-01T00:00:00+01:00/2017-02-01T00:00:00+01:00');
-    expect(r.humanPeriod).to.equal('month');
 
     r.tz('UTC');
     expect(r.humanPeriod).to.be.null();
@@ -200,7 +193,6 @@ describe('ExtendedDateRange', () => {
 
   it('detects a plain quarter', () => {
     const r = new ExtendedDateRange('2017-01-01T00:00:00+01:00/2017-04-01T00:00:00+01:00');
-    expect(r.humanPeriod).to.equal('quarter');
 
     r.tz('UTC');
     expect(r.humanPeriod).to.be.null();
@@ -218,7 +210,6 @@ describe('ExtendedDateRange', () => {
 
   it('detects a plain semester', () => {
     const r = new ExtendedDateRange('2017-01-01T00:00:00+01:00/2017-07-01T00:00:00+01:00');
-    expect(r.humanPeriod).to.equal('semester');
 
     r.tz('UTC');
     expect(r.humanPeriod).to.be.null();
@@ -236,7 +227,6 @@ describe('ExtendedDateRange', () => {
 
   it('detects a plain year', () => {
     const r = new ExtendedDateRange('2017-01-01T00:00:00+01:00/2018-01-01T00:00:00+01:00');
-    expect(r.humanPeriod).to.equal('year');
 
     r.tz('UTC');
     expect(r.humanPeriod).to.be.null();
@@ -254,7 +244,6 @@ describe('ExtendedDateRange', () => {
 
   it('supports DST switches and display stuff properly', () => {
     const r = new ExtendedDateRange('2017-03-01T00:00:00+01:00/2017-04-01T00:00:00+02:00');
-    expect(r.humanPeriod).to.equal('month');
 
     r.tz('UTC');
     expect(r.humanPeriod).to.be.null();
