@@ -1,6 +1,6 @@
 {
   "name": "arsene-moment",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "Arsene addition to Moment and Moment-Range",
   "main": "./lib/index.js",
   "scripts": {
@@ -11,7 +11,8 @@
     "cover": "cross-env BABEL_ENV=commonjs istanbul cover _mocha -- --compilers js:babel-register --recursive",
     "lint": "eslint src test",
     "build": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
-    "prepublish": "npm run clean && npm run lint && npm run test && npm run build"
+    "prepublish": "npm run clean && npm run lint && npm run test && npm run build",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "files": [
     "lib",
@@ -19,7 +20,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ListenArsene/arsene-moment.git"
+    "url": "https://github.com/ListenArsene/arsene-moment.git"
   },
   "keywords": [
     "arsene",
@@ -49,7 +50,8 @@
     "eslint-plugin-react": "^6.10.3",
     "istanbul": "^1.0.0-alpha",
     "mocha": "^3.3.0",
-    "rimraf": "^2.6.1"
+    "rimraf": "^2.6.1",
+    "semantic-release": "^6.3.2"
   },
   "dependencies": {
     "moment": "^2.18.1",

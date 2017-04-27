@@ -1,22 +1,17 @@
 language: node_js
+cache:
+  directories:
+    - node_modules
+notifications:
+  email: false
 node_js:
-- '6'
-script:
-- npm run lint
-- npm run test
-- npm run build
-- npm run test:examples
+  - '7'
+  - '6'
+  - '4'
+before_script:
+  - npm prune
+after_success:
+  - npm run semantic-release
 branches:
-  only:
-  - master
-  - /\d+\.\d+\.\d+[a-z-]?/
-
-deploy:
-  skip_cleanup: true
-  provider: npm
-  email: guillaume@listenarsene.com
-  api_key:
-    secure: iyZp10W1LRODCVwP1SlyEXWjY9CnQp3NOkz/mExF3OR4dHwL6FQcnHguL1CuxKni87x1fWkeM3LKB4vz7JRDVR5208S3ViQhl0TicdeYLPg+IuZvVfNG4aGz0wGQx+cxRudd8lR2ixCqD40OifyF9jeaA1NoB+HfiZz2TovDxQcszxVD+gdd3wBcVrlR3tuSFdYpIIJpYg/HVinfe4VxO8tEdZ66O4Jj6OD1w7gHQSVxCMatntgLezdb9bDcksjyNfeQvrJ7qZVL6Ky7f0jAfj7Xt4YN3W0uz9HH1uyNObZyqC7sGnXoIGP3gj3itICCabm/nWc8E03ikCKTCsuyE6z9uJzWHvnwxyJeJ7YKUx2YPZRJptQGwzXdrhfmY0P7SsnH3v7vN+JQQRpDbLKYstMZpv9M4rVDlwwgUPTHYhVGl5/2uF+sJrMVdoXylH9OgxMfdEarBiubur696sdT19InCxhlhTleoeKlo2hYzMhlB+BRSxz/U7MLjHn+lSDZ5zK7Wzvq3vyWJ9wANq5e0RgiXus6oCHt+uUmlrYZQB4Pcj1OF9HGC3UPRuRdwH4AlV4iscmqMMZ+qKrmvJeaKGwdfjPRlFKmUQO5+WcVWB+br4aPIFEco5fv6I1B6lJ3F+qxohSpV/Isr3MrivAMhWt3Tw6sQTkXuJypFvWO8OM=
-  on:
-    tags: true
-    repo: ListenArsene/arsene-moment
+  except:
+    - /^v\d+\.\d+\.\d+$/
