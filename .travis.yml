@@ -9,7 +9,7 @@ script:
 branches:
   only:
   - master
-  - /\d+\.\d+\.\d+[a-z]/
+  - /\d+\.\d+\.\d+[a-z-]?/
 
 deploy:
   skip_cleanup: true
